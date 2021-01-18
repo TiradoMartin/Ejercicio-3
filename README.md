@@ -8,7 +8,9 @@
 # Módulo 3: Expresiones, variables, funciones, objetos, sentencias, DOM y Arrays - Entrega P2P: Calculadora
 
 Versión: 27 de Junio de 2020
-
+ Entrega de mi trabajo en: https://github.com/TiradoMartin/Ejercicio-3
+ 
+ puede previsualisarlo y probarlo en: https://tiradomartin.github.io/Ejercicio-3/. 
 ## Objetivo
 
 Practicar con expresiones básicas, variables, asignaciones, if…else, switch…case, bucles, los tipos number, string, boolean, eventos sencillos, arrays, así como con objetos DOM y Date.
