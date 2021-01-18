@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora</title>
+  <meta charset="utf-8">
+  <style>
+    .container-button{
+      display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    margin-left: 3.6rem;
+    margin-top: 5px;
+  
+
+  }
+    button{
+      height: 25px;
+      width: 25px;
+      margin-top: 0%;
+      color:white;
+      background-color:grey;
+      border-radius: 5px;
+      margin-left: 3px;
+      
+    }
+    .button_g{
+      width: 4rem;
+    }
+    
+  </style>
+  <script type="text/javascript">
+    let num1,num2,operador;
+    const vaciar = () => {
+      document.getElementById("pantalla").value = "";
+    }
+
+    const cuadrado = () => {
+      let num = validar();
+      num.value = num.value * num.value;
+      let num_txt=1;
+
+      if (num.value<100)
+        return  num_text=" Info: El resultado es menor que 100";
+        
+      
+      else if(num.value<200)
+          return  num_text=num.value +" Info: El resultado está entre 100 y 200";
+      
+      else if(num.value>200)
+        return num_text=" Info: El resultado es superior a 200";
+      
+    else
+      return num_text= "Info: El Valor "+ num.value+"  no es valido";
+    
+    
+    }
+    const info=(info_value) => {
+      let infoText=document.getElementById("info");
+      if (typeof(info_value )!="undefined" ) infoText.innerHTML=info_value;
+    }
+
+    const mod = () => {
+      let num =validar();
+      let signo;
+          
+      return "El modulo es  "+(num.value=num.value%2)
+    }
+
+    const fact = () =>{
+      let num=validar();
+      let factorial=1;
+      let n=num.value;
+      for( i=1;i<=n;i++){
+        factorial=factorial*i;
+      }
+     return  "el factorial de "+n +" es "+(num.value=factorial);
+    }
+const mul  = ()=>{
+let num=validar();
+if (num.value>=0 || num.value<0 ){
+    num1=Number(num.value);
+    operador="x";
+    num.value="";
+}
+}
+
+const add=()=>{
+  let num=document.getElementById("pantalla");
+  if (num.value>=0 || num.value<0 ){
+    num1=Number(num.value);
+    operador="+";
+    num.value="";
+   
+}
+
+}
+
+const eq =()=>{
+let num=document.getElementById("pantalla");
+if (num.value>=0 || num.value<0 ){
+  num2=Number(num.value);
+}
+switch(operador){
+  case "x":
+   return num.value=num1*num2
+ 
+  break;
+  case "+":
+   return num.value=num1+num2
+  break;
+  case "-":
+   return num.value=num1-num2
+  break;
+  case "**":
+   return num.value=num1**num2
+  break;
+  case "/":
+   return num.value=num1/num2
+  break;
+  case "%":
+   return num.value=num1%num2
+  break;
+
+
+}
+
+
+}
+
+  const sumatoria =()=>{
+    let num=document.getElementById("pantalla")
+    let sum=num.value.split(",")
+    let i=0,sumt=0;
+    while(i<sum.length) sumt+= +sum[i++];
+
+    return num.value=sumt;
+  }  
+    
+  const ordenar=()=>{
+   let num=document.getElementById("pantalla")
+   let array =num.value.split(",")
+   let i=0,valor=[],numero;
+   while (i<array.length)valor=valor.concat(array[i++])
+  const sortNumber =(a,b)=>{return a-b}
+    return num.value=valor.sort(sortNumber)
+  }
+  const revertir=()=>{
+  let num=document.getElementById("pantalla")
+  let array =num.value.split(",")
+  return num.value=array.reverse()
+} 
+
+const quitar=()=>{
+  let num=document.getElementById("pantalla")
+  let array =num.value.split(",")
+  array.pop()
+  return num.value=array
+}
+
+const validar=()=>{
+  let num=document.getElementById("pantalla");
+  if (num.value<0 ||num.value>0 ){ //pass
+   return num
+   }
+else {let num=document.getElementById("pantalla");return num.value="Error Valor incorrecto"}
+}
+  </script>
+</head>
+<body>
+  Número:
+  <input type="text" id="pantalla" onclick="vaciar()">
+  <div class="container-button">
+    <button id="cuadrado" onclick="info(info_value=cuadrado())">x<sup>2</sup></button>
+    <button id="modulo" onclick="info(info_value=mod())">%</button>
+    <button id="factorial" onclick="info(info_value=fact())">x!</button>
+    <button id="multiplicacion" onclick="info(info_value=mul())">x</button>
+    <button id="suma" onclick="info(info_value=add())">+</button>
+    <button id="igual" onclick="info(info_value=eq())">=</button>
+    
+   
+
+  </div>
+  <div class="container-button">
+    <button id="sumatorio" onclick="info(info_value=sumatoria())">Σ</button>
+    <button id="ordenar" class="button_g" onclick="info(info_value=ordenar())">Ordenar</button>
+    <button id="revertir" class="button_g" onclick="info(info_value=revertir())">Revertir</button>
+  </div>
+  <div class="container-button">
+    <button class="button_g" id="quitar" onclick="info(info_value=quitar())">Quitar</button>
+    <button id="vaciar" class="button_g" onclick="vaciar()">Limpiar</button>   
+  </div>
+  
+  <h2 id="info" class="grande" title="info sobre el numero" >info sobre el número</h2>
+ </body>
+</html>
